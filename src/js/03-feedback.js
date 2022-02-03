@@ -24,12 +24,23 @@ function onFormInput(evnt) {
 }
 
 function fillTextarea() {
-  const savedMessage = localStorage.getItem(STORAGE_KEY);
+  const savedMessage = JSON.parse(localStorage.getItem(STORAGE_KEY));
 
-  if (savedMessage) {
-    refs.input.value = JSON.parse(savedMessage).email;
-    refs.textarea.value = JSON.parse(savedMessage).message;
+  if (savedMessage.email) {
+    refs.input.value = savedMessage.email;
+  }
+  if (savedMessage.message) {
+    refs.textarea.value = savedMessage.message;
   }
 }
+
+// function fillTextarea() {
+//   const savedMessage = JSON.parse(localStorage.getItem(STORAGE_KEY));
+
+//   if (savedMessage) {
+//     refs.input.value = savedMessage.email;
+//     refs.textarea.value = savedMessage.message;
+//   }
+// }
 
 fillTextarea();
